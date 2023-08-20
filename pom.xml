@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>co.aikar</groupId>
   <artifactId>task-chain</artifactId>
-  <version>3.7.5-SNAPSHOT</version>
+  <version>3.7.6-SNAPSHOT</version>
   
   <parent>
     <groupId>net.iluminary</groupId>
@@ -14,7 +14,7 @@
     	<dependency>
 		    <groupId>net.iluminary</groupId>
 		    <artifactId>dungeon-api</artifactId>
-		    <version>1.2.36-SNAPSHOT</version>
+		    <version>1.3.0-SNAPSHOT</version>
 		    <scope>provided</scope>
 		    <exclusions>
 		        <exclusion>  <!-- declare the exclusion here -->

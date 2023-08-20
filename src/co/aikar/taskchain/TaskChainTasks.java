@@ -26,7 +26,7 @@ package co.aikar.taskchain;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 
-import net.iluminary.dungeonapi.hybrid.database.DatabaseConnection;
+import net.iluminary.base.database.DatabaseConnection;
 
 @SuppressWarnings("WeakerAccess")
 public class TaskChainTasks {

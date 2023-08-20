@@ -33,15 +33,11 @@
 
 package co.aikar.taskchain;
 
-import co.aikar.taskchain.TaskChainTasks.*;
-import net.iluminary.dungeonapi.hybrid.database.DatabaseConnection;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.TimeUnit;
@@ -50,6 +46,21 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+
+import co.aikar.taskchain.TaskChainTasks.AsyncExecutingGenericTask;
+import co.aikar.taskchain.TaskChainTasks.AsyncExecutingSupplierTask;
+import co.aikar.taskchain.TaskChainTasks.AsyncExecutingTask;
+import co.aikar.taskchain.TaskChainTasks.ConsumerTask;
+import co.aikar.taskchain.TaskChainTasks.DatabaseConsumerTask;
+import co.aikar.taskchain.TaskChainTasks.DatabaseGenericTask;
+import co.aikar.taskchain.TaskChainTasks.DatabaseSupplierTask;
+import co.aikar.taskchain.TaskChainTasks.DatabaseTask;
+import co.aikar.taskchain.TaskChainTasks.FutureGenericTask;
+import co.aikar.taskchain.TaskChainTasks.FutureSupplierTask;
+import co.aikar.taskchain.TaskChainTasks.FutureTask;
+import co.aikar.taskchain.TaskChainTasks.GenericTask;
+import co.aikar.taskchain.TaskChainTasks.SupplierTask;
+import co.aikar.taskchain.TaskChainTasks.Task;
 
 
 /**

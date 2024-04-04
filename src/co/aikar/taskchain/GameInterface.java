@@ -24,6 +24,7 @@
 package co.aikar.taskchain;
 
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Logger;
 
 @SuppressWarnings("WeakerAccess")
 public interface GameInterface {
@@ -38,6 +39,12 @@ public interface GameInterface {
      * @return
      */
     AsyncQueue getAsyncQueue();
+    
+    /**
+     * Returns the Logger instance used by this game implementation
+     * @return
+     */
+    Logger getLogger();
 
     /**
      * Schedule a runnable to run on the main thread

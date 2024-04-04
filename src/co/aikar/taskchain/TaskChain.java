@@ -45,6 +45,7 @@ import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.logging.Level;
 import java.util.stream.Collectors;
 
 import co.aikar.taskchain.TaskChainTasks.AsyncExecutingGenericTask;
@@ -1575,16 +1576,12 @@ public class TaskChain <T> {
                 currentChain.set(this);
                 errorHandler.accept(e, task);
             } catch (Exception e2) {
-                TaskChainUtil.logError("TaskChain Exception in the error handler!" + e2.getMessage());
-                TaskChainUtil.logError("Current Action Index was: " + currentActionIndex);
-                e.printStackTrace();
+            	impl.getLogger().log(Level.SEVERE, "TaskChain Exception in the error handler at index %s: %s".formatted(currentActionIndex, e2.getMessage()), e2);
             } finally {
                 currentChain.set(prev);
             }
         } else {
-            TaskChainUtil.logError("TaskChain Exception on " + (task != null ? task.getClass().getName() : "Done / Abort Hander") + ": " + e.getMessage());
-            TaskChainUtil.logError("Current Action Index was: " + currentActionIndex);
-            e.printStackTrace();
+        	impl.getLogger().log(Level.SEVERE, "TaskChain Exception on %s at index %s: %s".formatted(task != null ? task.getClass().getName() : "Done / Abort Hander", currentActionIndex, e.getMessage()), e);
         }
     }
 

@@ -23,26 +23,8 @@
 
 package co.aikar.taskchain;
 
-import java.util.logging.Logger;
-
 final class TaskChainUtil {
     private TaskChainUtil() {
-    }
-
-    /**
-     * Util method for example logging
-     * @param log
-     */
-    static void log(String log) {
-        for (String s : log.split("\n")) {
-            Logger.getGlobal().info(s);
-        }
-    }
-
-    public static void logError(String log) {
-        for (String s : log.split("\n")) {
-            Logger.getGlobal().severe(s);
-        }
     }
 
     /**

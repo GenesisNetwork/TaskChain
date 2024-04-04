@@ -23,25 +23,23 @@
 
 package co.aikar.taskchain;
 
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Logger;
+
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.server.PluginDisableEvent;
 import org.bukkit.plugin.Plugin;
 
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
-
 @SuppressWarnings({"WeakerAccess", "unused"})
 public class BukkitTaskChainFactory extends TaskChainFactory {
-    private BukkitTaskChainFactory(Plugin plugin, AsyncQueue asyncQueue) {
-        super(new BukkitGameInterface(plugin, asyncQueue));
+    private BukkitTaskChainFactory(Plugin plugin, AsyncQueue asyncQueue, Logger logger) {
+        super(new BukkitGameInterface(plugin, asyncQueue, logger));
     }
 
     public static TaskChainFactory create(Plugin plugin) {
-        return new BukkitTaskChainFactory(plugin, new TaskChainAsyncQueue());
+        return new BukkitTaskChainFactory(plugin, new TaskChainAsyncQueue(), plugin.getLogger());
     }
 /* @TODO: #9 - Not Safe to do this
     public static TaskChainFactory create(Plugin plugin, ThreadPoolExecutor executor) {
@@ -56,16 +54,23 @@ public class BukkitTaskChainFactory extends TaskChainFactory {
     private static class BukkitGameInterface implements GameInterface {
         private final Plugin plugin;
         private final AsyncQueue asyncQueue;
+        private final Logger logger;
 
-        BukkitGameInterface(Plugin plugin, AsyncQueue asyncQueue) {
+        BukkitGameInterface(Plugin plugin, AsyncQueue asyncQueue, Logger logger) {
             this.plugin = plugin;
             this.asyncQueue = asyncQueue;
+            this.logger = logger;
         }
 
         @Override
         public AsyncQueue getAsyncQueue() {
             return this.asyncQueue;
         }
+        
+        @Override
+		public Logger getLogger() {
+			return logger;
+		}
 
         @Override
         public boolean isMainThread() {
